@@ -15,10 +15,12 @@ namespace MoneyMaker.Controllers
     public class GenerationController : Controller
     {
         private readonly MoneyMakerContext _context;
+        private readonly ScraperService _scraperService;
 
-        public GenerationController(MoneyMakerContext context)
+        public GenerationController(MoneyMakerContext context, ScraperService scraperService)
         {
             _context = context;
+            _scraperService = scraperService;
         }
 
         // GET: api/values
@@ -29,12 +31,29 @@ namespace MoneyMaker.Controllers
             StringBuilder generationSB = new StringBuilder();
             DateTime weekStart = new DateTime(2016, 9, 6);
 
-            for(int i = 1; i <= 17; i++)
+            for (int i = 1; i <= 17; i++)
             {
                 _context.NflWeeks.Add(new NflWeek { Start = weekStart, End = weekStart.AddDays(7) });
                 weekStart = weekStart.AddDays(7);
             }
-            
+
+            return generationSB.ToString();
+        }
+
+        [HttpGet]
+        [Route("NflTeams")]
+        public async Task<String> GetNflTeams()
+        {
+            StringBuilder generationSB = new StringBuilder();
+
+            List<Team> teams = await _scraperService.ScrapeNflTeams();
+
+            foreach(Team team in teams)
+            {
+                _context.Teams.Add(new Team { CbsId = team.CbsId });
+                generationSB.AppendLine($"context.Teams.Add(new Team {{ CbsId = \"{team.CbsId}\" }});");
+            }
+
             return generationSB.ToString();
         }
     }

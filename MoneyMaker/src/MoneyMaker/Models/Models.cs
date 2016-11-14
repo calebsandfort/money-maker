@@ -70,6 +70,14 @@ namespace MoneyMaker.Models
             set { _games = value; }
         }
 
+        [NotMapped]
+        public String CbsLink
+        {
+            get
+            {
+                return $"http://www.cbssports.com/nfl/teams/page/{this.CbsId}";
+            }
+        }
     }
     #endregion
 
