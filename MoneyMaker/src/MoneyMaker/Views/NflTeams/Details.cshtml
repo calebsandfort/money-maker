@@ -1,0 +1,126 @@
+@model MoneyMaker.Models.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CbsId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CbsId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Conference)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Conference)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DefensePassingRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DefensePassingRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DefenseRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DefenseRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DefenseRushingRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DefenseRushingRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Division)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Division)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedLosses)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedLosses)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedTies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedTies)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedWins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedWins)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.League)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.League)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Losses)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Losses)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OffensePassingRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OffensePassingRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OffenseRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OffenseRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OffenseRushingRank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OffenseRushingRank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerRanking)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PowerRanking)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ties)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ties)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Wins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wins)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

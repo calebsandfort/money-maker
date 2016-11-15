@@ -1,0 +1,154 @@
+@model MoneyMaker.Models.Team
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Team</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CbsId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CbsId" class="form-control" />
+                <span asp-validation-for="CbsId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Conference" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Conference" class="form-control"></select>
+                <span asp-validation-for="Conference" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DefensePassingRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DefensePassingRank" class="form-control" />
+                <span asp-validation-for="DefensePassingRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DefenseRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DefenseRank" class="form-control" />
+                <span asp-validation-for="DefenseRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DefenseRushingRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DefenseRushingRank" class="form-control" />
+                <span asp-validation-for="DefenseRushingRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Division" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Division" class="form-control"></select>
+                <span asp-validation-for="Division" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ExpectedLosses" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ExpectedLosses" class="form-control" />
+                <span asp-validation-for="ExpectedLosses" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ExpectedTies" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ExpectedTies" class="form-control" />
+                <span asp-validation-for="ExpectedTies" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ExpectedWins" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ExpectedWins" class="form-control" />
+                <span asp-validation-for="ExpectedWins" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="League" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="League" class="form-control"></select>
+                <span asp-validation-for="League" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Losses" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Losses" class="form-control" />
+                <span asp-validation-for="Losses" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OffensePassingRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OffensePassingRank" class="form-control" />
+                <span asp-validation-for="OffensePassingRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OffenseRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OffenseRank" class="form-control" />
+                <span asp-validation-for="OffenseRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OffenseRushingRank" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OffenseRushingRank" class="form-control" />
+                <span asp-validation-for="OffenseRushingRank" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PowerRanking" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PowerRanking" class="form-control" />
+                <span asp-validation-for="PowerRanking" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ties" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Ties" class="form-control" />
+                <span asp-validation-for="Ties" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Wins" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Wins" class="form-control" />
+                <span asp-validation-for="Wins" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

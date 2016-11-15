@@ -44,9 +44,23 @@ namespace MoneyMaker.Models
         public Conferences Conference { get; set; }
         public Divisions Division { get; set; }
 
+        [Range(1, 16)]
         public int Wins { get; set; }
+
+        [Range(1, 16)]
         public int Losses { get; set; }
+
+        [Range(1, 16)]
         public int Ties { get; set; }
+
+        [Range(1, 16)]
+        public int ExpectedWins { get; set; }
+
+        [Range(1, 16)]
+        public int ExpectedLosses { get; set; }
+
+        [Range(1, 16)]
+        public int ExpectedTies { get; set; }
 
         public int OffenseRank { get; set; }
         public int OffensePassingRank { get; set; }

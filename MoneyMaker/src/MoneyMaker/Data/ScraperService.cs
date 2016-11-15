@@ -60,26 +60,17 @@ namespace MoneyMaker.Data
             #endregion
 
             #region Rankings
-            try
-            {
-                List<HtmlNode> statRows = doc.DocumentNode.QuerySelectorAll(".stats tr.row1").ToList();
-                team.OffenseRank = statRows[0].QuerySelectorAll("td").ElementAt(1).InnerText.GetNumber();
-                team.OffenseRushingRank = statRows[0].QuerySelectorAll("td").ElementAt(2).InnerText.GetNumber();
-                team.OffensePassingRank = statRows[0].QuerySelectorAll("td").ElementAt(3).InnerText.GetNumber();
+            List<HtmlNode> statRows = doc.DocumentNode.QuerySelectorAll(".stats tr.row1").ToList();
+            team.OffenseRank = statRows[0].QuerySelectorAll("td").ElementAt(1).InnerText.GetNumber();
+            team.OffenseRushingRank = statRows[0].QuerySelectorAll("td").ElementAt(2).InnerText.GetNumber();
+            team.OffensePassingRank = statRows[0].QuerySelectorAll("td").ElementAt(3).InnerText.GetNumber();
 
-                team.DefenseRank = statRows[1].QuerySelectorAll("td").ElementAt(1).InnerText.GetNumber();
-                team.DefenseRushingRank = statRows[1].QuerySelectorAll("td").ElementAt(2).InnerText.GetNumber();
-                team.DefensePassingRank = statRows[1].QuerySelectorAll("td").ElementAt(3).InnerText.GetNumber();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            team.DefenseRank = statRows[1].QuerySelectorAll("td").ElementAt(1).InnerText.GetNumber();
+            team.DefenseRushingRank = statRows[1].QuerySelectorAll("td").ElementAt(2).InnerText.GetNumber();
+            team.DefensePassingRank = statRows[1].QuerySelectorAll("td").ElementAt(3).InnerText.GetNumber();
             #endregion
 
             return team;
-
-
         }
         #endregion
 
@@ -122,40 +113,26 @@ namespace MoneyMaker.Data
                 String otherTeamString = scheduleRow.QuerySelector(".gameMatchup").InnerText.Replace("Recap", String.Empty).Replace("Preview", String.Empty);
                 bool awayGame = otherTeamString.StartsWith("at ");
 
-                try
+                if (awayGame)
                 {
-                    if (awayGame)
-                    {
-                        game.AwayTeamID = team.ID;
-                        game.HomeTeamID = _teams.First(x => x.CbsId == otherTeamString.Replace("at ", String.Empty)).ID;
-                    }
-                    else
-                    {
-                        game.AwayTeamID = _teams.First(x => x.CbsId == otherTeamString).ID;
-                        game.HomeTeamID = team.ID;
-                    }
+                    game.AwayTeamID = team.ID;
+                    game.HomeTeamID = _teams.First(x => x.CbsId == otherTeamString.Replace("at ", String.Empty)).ID;
                 }
-                catch(Exception ex)
+                else
                 {
-
+                    game.AwayTeamID = _teams.First(x => x.CbsId == otherTeamString).ID;
+                    game.HomeTeamID = team.ID;
                 }
                 #endregion
 
                 #region Date
-                try
+                if (scheduleRow.QuerySelector(".gameDate").InnerText == "Today")
                 {
-                    if (scheduleRow.QuerySelector(".gameDate").InnerText == "Today")
-                    {
-                        game.Date = today;
-                    }
-                    else
-                    {
-                        game.Date = DateTime.Parse(scheduleRow.QuerySelector(".gameDate").InnerText.StripDay());
-                    }
+                    game.Date = today;
                 }
-                catch (Exception ex)
+                else
                 {
-
+                    game.Date = DateTime.Parse(scheduleRow.QuerySelector(".gameDate").InnerText.StripDay());
                 }
 
                 if (game.Date.Month == 1) game.Date = new DateTime(game.Date.Year + 1, game.Date.Month, game.Date.Day);

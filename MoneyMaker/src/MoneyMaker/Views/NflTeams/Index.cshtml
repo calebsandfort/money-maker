@@ -1,0 +1,137 @@
+@model IEnumerable<MoneyMaker.Models.Team>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CbsId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefensePassingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefenseRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefenseRushingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Division)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedLosses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedTies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedWins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.League)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Losses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OffensePassingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OffenseRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OffenseRushingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PowerRanking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wins)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CbsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefensePassingRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefenseRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefenseRushingRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedLosses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedTies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedWins)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.League)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Losses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OffensePassingRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OffenseRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OffenseRushingRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PowerRanking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ties)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wins)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
