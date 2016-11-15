@@ -50,8 +50,29 @@ namespace MoneyMaker.Controllers
 
             foreach(Team team in teams)
             {
-                _context.Teams.Add(new Team { CbsId = team.CbsId });
-                generationSB.AppendLine($"context.Teams.Add(new Team {{ CbsId = \"{team.CbsId}\" }});");
+                _context.Teams.Add(new Team { Name = team.Name, CbsId = team.CbsId, League = Leagues.Nfl, Conference = Conferences.None, Division = Divisions.None,
+                    OffenseRank = team.OffenseRank, OffenseRushingRank = team.OffenseRushingRank, OffensePassingRank = team.OffensePassingRank,
+                    DefenseRank = team.DefenseRank, DefenseRushingRank = team.DefenseRushingRank, DefensePassingRank = team.DefensePassingRank });
+
+                generationSB.AppendLine($"context.Teams.Add(new Team {{ Name = \"{team.Name}\", CbsId = \"{team.CbsId}\", League = Leagues.Nfl, Conference = Conferences.None, Division = Divisions.None,");
+                generationSB.AppendLine($"    OffenseRank = {team.OffenseRank}, OffenseRushingRank = {team.OffenseRushingRank}, OffensePassingRank = {team.OffensePassingRank},");
+                generationSB.AppendLine($"    DefenseRank = {team.DefenseRank}, DefenseRushingRank = {team.DefenseRushingRank}, DefensePassingRank = {team.DefensePassingRank} }});");
+            }
+
+            return generationSB.ToString();
+        }
+
+        [HttpGet]
+        [Route("NflGames")]
+        public async Task<String> GetNflGames()
+        {
+            StringBuilder generationSB = new StringBuilder();
+
+            List<Game> games = await _scraperService.ScrapeNflGames();
+
+            foreach (Game game in games)
+            {
+                generationSB.AppendLine($"context.Games.Add(new Game {{ Date = DateTime.Parse(\"{game.Date.ToString()}\"), AwayTeamID = {game.AwayTeamID}, HomeTeamID = {game.HomeTeamID}, NflWeekID = {game.NflWeekID}, AwayScore = {game.AwayScore}, HomeScore = {game.HomeScore}, Played = {game.Played.ToString().ToLower()} }});");
             }
 
             return generationSB.ToString();

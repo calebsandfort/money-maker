@@ -90,6 +90,7 @@ namespace MoneyMaker.Models
 
         public int AwayScore { get; set; }
         public int HomeScore { get; set; }
+        public bool Played { get; set; }
 
         public int AwayTeamID { get; set; }
         public Team AwayTeam { get; set; }

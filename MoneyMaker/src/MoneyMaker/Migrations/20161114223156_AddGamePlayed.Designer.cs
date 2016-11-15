@@ -8,9 +8,10 @@ using MoneyMaker.Data;
 namespace MoneyMaker.Migrations
 {
     [DbContext(typeof(MoneyMakerContext))]
-    partial class MoneyMakerContextModelSnapshot : ModelSnapshot
+    [Migration("20161114223156_AddGamePlayed")]
+    partial class AddGamePlayed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

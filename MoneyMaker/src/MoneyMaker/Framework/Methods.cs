@@ -42,5 +42,33 @@ namespace MoneyMaker.Framework
             }
         }
         #endregion
+
+        #region GetNumber
+        public static int GetNumber(this String val)
+        {
+            int ret = -1;
+
+            if (!String.IsNullOrEmpty(val) && (val.Contains("st") || val.Contains("nd") || val.Contains("th")))
+            {
+                if (val.Contains("("))
+                {
+                    ret = Int32.Parse(val.Substring(val.IndexOf("(")).Replace("(", String.Empty).Replace(")", String.Empty).Replace("st", String.Empty).Replace("nd", String.Empty).Replace("th", String.Empty).Replace("rd", String.Empty));
+                }
+                else
+                {
+                    ret = Int32.Parse(val.Replace("st", String.Empty).Replace("nd", String.Empty).Replace("th", String.Empty).Replace("rd", String.Empty));
+                }
+            }
+
+            return ret;
+        }
+        #endregion
+
+        #region StripDay
+        public static String StripDay(this String val)
+        {
+            return val.Replace("Sun ", String.Empty).Replace("Mon ", String.Empty).Replace("Thu ", String.Empty).Replace("Sat ", String.Empty);
+        }
+        #endregion
     }
 }
