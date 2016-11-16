@@ -70,22 +70,22 @@ namespace MoneyMaker.Models
         [Display(Name = "Exp Ties")]
         public int ExpectedTies { get; set; }
 
-        [Display(Name = "O Rank")]
+        [Display(Name = "O")]
         public int OffenseRank { get; set; }
 
-        [Display(Name = "O Pass Rank")]
+        [Display(Name = "O-Pass")]
         public int OffensePassingRank { get; set; }
 
-        [Display(Name = "O Rush Rank")]
+        [Display(Name = "O-Rush")]
         public int OffenseRushingRank { get; set; }
 
-        [Display(Name = "D Rank")]
+        [Display(Name = "D")]
         public int DefenseRank { get; set; }
 
-        [Display(Name = "D Pass Rank")]
+        [Display(Name = "D-Pass")]
         public int DefensePassingRank { get; set; }
 
-        [Display(Name = "D Rush Rank")]
+        [Display(Name = "D-Rush")]
         public int DefenseRushingRank { get; set; }
 
         public int PowerRanking { get; set; }
@@ -115,6 +115,34 @@ namespace MoneyMaker.Models
             get
             {
                 return $"http://www.cbssports.com/nfl/teams/page/{this.CbsId}";
+            }
+        }
+
+        [NotMapped]
+        public String CbsLogo
+        {
+            get
+            {
+                return $"http://sports.cbsimg.net/images/nfl/logos/30x30/{this.CbsId}.png";
+            }
+        }
+
+        [NotMapped]
+        public String Record
+        {
+            get
+            {
+                return $"{this.Wins} - {this.Losses} - {this.Ties}";
+            }
+        }
+
+        [NotMapped]
+        [Display(Name = "Exp Rec")]
+        public String ExpectedRecord
+        {
+            get
+            {
+                return $"{this.ExpectedWins} - {this.ExpectedLosses} - {this.ExpectedTies}";
             }
         }
         #endregion
