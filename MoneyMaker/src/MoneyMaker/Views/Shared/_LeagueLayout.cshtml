@@ -1,0 +1,6 @@
+﻿@model LeagueLayout
+
+@foreach(ConferenceLayout conferenceLayout in Model.ConferenceLayouts)
+{
+    @Html.Partial("_ConferenceLayout", conferenceLayout)
+}

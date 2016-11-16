@@ -1,0 +1,98 @@
+﻿@model DivisionLayout
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @(Model.Division.GetAttribute<EnumDisplayAttribute>().Display)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].DefensePassingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].DefenseRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].DefenseRushingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].ExpectedLosses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].ExpectedTies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].ExpectedWins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].Losses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].OffensePassingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].OffenseRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].OffenseRushingRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].Ties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teams[0].Wins)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Teams)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefensePassingRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefenseRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefenseRushingRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedLosses)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedTies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedWins)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Losses)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OffensePassingRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OffenseRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OffenseRushingRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ties)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wins)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

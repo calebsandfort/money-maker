@@ -34,6 +34,7 @@ namespace MoneyMaker.Models
     #region Team
     public class Team : EntityBase
     {
+        #region Properties
         [StringLength(50)]
         public String Name { get; set; }
 
@@ -41,7 +42,11 @@ namespace MoneyMaker.Models
         public String CbsId { get; set; }
 
         public Leagues League { get; set; }
+
+        [Display(Name = "Conf")]
         public Conferences Conference { get; set; }
+
+        [Display(Name = "Div")]
         public Divisions Division { get; set; }
 
         [Range(1, 16)]
@@ -54,20 +59,33 @@ namespace MoneyMaker.Models
         public int Ties { get; set; }
 
         [Range(1, 16)]
+        [Display(Name = "Exp Wins")]
         public int ExpectedWins { get; set; }
 
         [Range(1, 16)]
+        [Display(Name = "Exp Losses")]
         public int ExpectedLosses { get; set; }
 
         [Range(1, 16)]
+        [Display(Name = "Exp Ties")]
         public int ExpectedTies { get; set; }
 
+        [Display(Name = "O Rank")]
         public int OffenseRank { get; set; }
+
+        [Display(Name = "O Pass Rank")]
         public int OffensePassingRank { get; set; }
+
+        [Display(Name = "O Rush Rank")]
         public int OffenseRushingRank { get; set; }
 
+        [Display(Name = "D Rank")]
         public int DefenseRank { get; set; }
+
+        [Display(Name = "D Pass Rank")]
         public int DefensePassingRank { get; set; }
+
+        [Display(Name = "D Rush Rank")]
         public int DefenseRushingRank { get; set; }
 
         public int PowerRanking { get; set; }
@@ -80,8 +98,15 @@ namespace MoneyMaker.Models
         [NotMapped]
         public List<Game> Games
         {
-            get { return _games; }
-            set { _games = value; }
+            get
+            {
+                if (this._games == null)
+                {
+                    _games = new List<Game>(this.AwayGames);
+                    _games.AddRange(this.HomeGames);
+                }
+                return _games;
+            }
         }
 
         [NotMapped]
@@ -92,6 +117,34 @@ namespace MoneyMaker.Models
                 return $"http://www.cbssports.com/nfl/teams/page/{this.CbsId}";
             }
         }
+        #endregion
+
+        #region Methods
+        public void SyncRecord()
+        {
+            this.Wins = 0;
+            this.Losses = 0;
+            this.Ties = 0;
+
+            foreach(Game game in this.Games.Where(x => x.Played))
+            {
+                if((game.AwayTeamID == this.ID && game.AwayScore > game.HomeScore)
+                    || (game.HomeTeamID == this.ID && game.HomeScore > game.AwayScore))
+                {
+                    this.Wins += 1;
+                }
+                else if ((game.AwayTeamID == this.ID && game.AwayScore < game.HomeScore)
+                    || (game.HomeTeamID == this.ID && game.HomeScore < game.AwayScore))
+                {
+                    this.Losses += 1;
+                }
+                else if (game.AwayScore == game.HomeScore)
+                {
+                    this.Ties += 1;
+                }
+            }
+        }
+        #endregion
     }
     #endregion
 

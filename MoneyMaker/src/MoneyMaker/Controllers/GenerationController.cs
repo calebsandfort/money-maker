@@ -77,5 +77,31 @@ namespace MoneyMaker.Controllers
 
             return generationSB.ToString();
         }
+
+        [HttpGet]
+        [Route("UpdateNflGames")]
+        public async Task<String> GetUpdateNflGames()
+        {
+            StringBuilder generationSB = new StringBuilder();
+
+            List<Game> games = await _scraperService.ScrapeNflGames();
+            Game gameToUpdate;
+
+            foreach (Game game in games)
+            {
+                if (game.AwayScore == 0 && game.HomeScore == 0) continue;
+
+                    gameToUpdate = _context.Games.FirstOrDefault(x => x.AwayTeamID == game.AwayTeamID && x.HomeTeamID == game.HomeTeamID && x.AwayScore == 0 && x.HomeScore == 0);
+                if(gameToUpdate != null)
+                {
+                    gameToUpdate.AwayScore = game.AwayScore;
+                    gameToUpdate.HomeScore = game.HomeScore;
+                    gameToUpdate.Played = true;
+                    _context.SaveChanges();
+                }
+            }
+
+            return generationSB.ToString();
+        }
     }
 }

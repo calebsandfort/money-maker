@@ -23,9 +23,9 @@ namespace MoneyMaker.Models
 
     #region Attributes
     #region DisplayAttribute
-    public class DisplayAttribute : Attribute
+    public class EnumDisplayAttribute : Attribute
     {
-        internal DisplayAttribute(string display)
+        internal EnumDisplayAttribute(string display)
         {
             this.Display = display;
         }
@@ -37,10 +37,10 @@ namespace MoneyMaker.Models
     #region Leagues
     public enum Leagues
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("NFL")]
+        [EnumDisplay("NFL")]
         Nfl
     }
     #endregion
@@ -48,13 +48,13 @@ namespace MoneyMaker.Models
     #region Conferences
     public enum Conferences
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("American")]
+        [EnumDisplay("AFC")]
         American,
 
-        [Display("National")]
+        [EnumDisplay("NFC")]
         National
     }
     #endregion
@@ -62,19 +62,19 @@ namespace MoneyMaker.Models
     #region Divisions
     public enum Divisions
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("East")]
+        [EnumDisplay("East")]
         East,
 
-        [Display("South")]
+        [EnumDisplay("South")]
         South,
 
-        [Display("North")]
+        [EnumDisplay("North")]
         North,
 
-        [Display("West")]
+        [EnumDisplay("West")]
         West
     }
     #endregion
@@ -82,16 +82,16 @@ namespace MoneyMaker.Models
     #region GameOutcomes
     public enum GameOutcomes
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("Win")]
+        [EnumDisplay("Win")]
         Win,
 
-        [Display("Loss")]
+        [EnumDisplay("Loss")]
         Loss,
 
-        [Display("Tie")]
+        [EnumDisplay("Tie")]
         Tie
     }
     #endregion
@@ -99,16 +99,16 @@ namespace MoneyMaker.Models
     #region BetOutcomes
     public enum BetOutcomes
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("Win")]
+        [EnumDisplay("Win")]
         Win,
 
-        [Display("Loss")]
+        [EnumDisplay("Loss")]
         Loss,
 
-        [Display("Push")]
+        [EnumDisplay("Push")]
         Push
     }
     #endregion
@@ -116,16 +116,16 @@ namespace MoneyMaker.Models
     #region BetTypes
     public enum BetTypes
     {
-        [Display("None")]
+        [EnumDisplay("None")]
         None = 0,
 
-        [Display("Single")]
+        [EnumDisplay("Single")]
         Single,
 
-        [Display("Parlay")]
+        [EnumDisplay("Parlay")]
         Parlay,
 
-        [Display("Teaser")]
+        [EnumDisplay("Teaser")]
         Teaser
     }
     #endregion

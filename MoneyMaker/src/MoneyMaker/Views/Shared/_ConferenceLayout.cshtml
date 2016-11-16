@@ -1,0 +1,13 @@
+﻿@model ConferenceLayout
+
+<div class="row">
+    <div class="col-xs-12 block-header block-header-primary block-header-white">
+        <h2 style="margin: 20px 0;">
+            <span class="title">@(Model.Conference.GetAttribute<EnumDisplayAttribute>().Display)</span><span class="decoration"></span><span class="decoration"></span><span class="decoration"></span>
+        </h2>
+        @foreach(DivisionLayout divisionLayout in Model.DivisionLayouts)
+        {
+            @Html.Partial("_DivisionLayout", divisionLayout)
+        }
+    </div>
+</div>

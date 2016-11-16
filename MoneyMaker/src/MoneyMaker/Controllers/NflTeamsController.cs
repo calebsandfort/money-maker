@@ -22,7 +22,45 @@ namespace MoneyMaker.Controllers
         // GET: NflTeams
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teams.Where(x => x.League == Leagues.Nfl).ToListAsync());
+            List<Team> teams = await _context.Teams.Where(x => x.League == Leagues.Nfl).ToListAsync();
+
+            var conferenceGroupings = from t in _context.Teams
+                        group t by new { t.Conference } into g
+                        orderby g.Key.Conference
+                        select new
+                        {
+                            Conference = g.Key.Conference,
+                            Teams = g.ToList()
+                        };
+
+            LeagueLayout leagueLayout = new LeagueLayout();
+
+            foreach(var conferenceGrouping in conferenceGroupings)
+            {
+                ConferenceLayout conferenceLayout = new ConferenceLayout() { Conference = conferenceGrouping.Conference };
+
+                var divisionGroupings = from t in conferenceGrouping.Teams
+                                        group t by new { t.Division } into g
+                                        orderby g.Key.Division
+                                        select new
+                                        {
+                                            Division = g.Key.Division,
+                                            Teams = g.OrderByDescending(x => x.Wins).ToList()
+                                        };
+
+                foreach(var divisionGrouping in divisionGroupings)
+                {
+                    conferenceLayout.DivisionLayouts.Add(new DivisionLayout()
+                    {
+                        Division = divisionGrouping.Division,
+                        Teams = divisionGrouping.Teams
+                    });
+                }
+
+                leagueLayout.ConferenceLayouts.Add(conferenceLayout);
+            }
+
+            return View(leagueLayout);
         }
 
         // GET: NflTeams/Details/5
