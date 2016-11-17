@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoneyMaker.Data;
+using MoneyMaker.Models;
 
 namespace MoneyMaker.Controllers
 {
@@ -13,11 +14,13 @@ namespace MoneyMaker.Controllers
     {
         private readonly MoneyMakerContext _context;
         private readonly SyncService _syncService;
+        private readonly ScraperService _scraperService;
 
-        public SyncController(MoneyMakerContext context, SyncService syncService)
+        public SyncController(MoneyMakerContext context, SyncService syncService, ScraperService scraperService)
         {
             _context = context;
             _syncService = syncService;
+            _scraperService = scraperService;
         }
 
         [HttpGet]
@@ -25,6 +28,13 @@ namespace MoneyMaker.Controllers
         public async Task GetNflRecords()
         {
             await _syncService.SyncNflRecords();
+        }
+
+        [HttpGet]
+        [Route("NflTeamStats")]
+        public async Task GetNflTeamStats()
+        {
+            await _syncService.SyncNflStats(await _scraperService.ScrapeNflTeams());
         }
     }
 }

@@ -1,6 +1,21 @@
-﻿@{
+﻿@model GameWeekLayout
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 
-Make Me Some Money
+<div class="row">
+    <div class="col-xs-6">
+        <select class="form-control" asp-items="ViewBag.NflWeekID"></select>
+    </div>
+    <div class="col-xs-6">
+        <a class="btn btn-primary" href=@String.Format("http://www.foxsports.com/nfl/predictions?season=2016&seasonType=1&week=11", ViewBag.NflWeekNumber) target="_blank">WhatIfSports</a>
+        <a class="btn btn-primary" href="http://www.bing.com/search?q=nfl+predictions&qs=HS&sc=8-0&sp=1&cvid=41FE43CC5C934CCA88D4788C74F84CCB&FORM=QBLH&ajf=100" target="_blank">Bing Predictions</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("_GamesLayout", Model)        
+    </div>
+</div>

@@ -26,6 +26,18 @@ namespace MoneyMaker.Data
             await _context.SaveChangesAsync();
         }
 
+        public async Task SyncNflStats(List<Team> teams)
+        {
+            foreach (Team t in teams)
+            {
+                Team team = _context.Teams.SingleOrDefault(x => x.League == Leagues.Nfl && x.CbsId == t.CbsId);
+
+                team.SyncStats(t);
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
         #region Dispose
         public void Dispose()
         {

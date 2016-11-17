@@ -1,0 +1,20 @@
+﻿@model GameWeekLayout
+
+@foreach (GameDayLayout gameDayLayout in Model.GameDayLayouts)
+{
+    <div class="row">
+        <div class="col-xs-12 block-header block-header-info block-header-white">
+            <h2 style="margin: 20px 0;">
+                <span class="title">@(gameDayLayout.Day.ToShortDateString())</span><span class="decoration"></span><span class="decoration"></span><span class="decoration"></span>
+            </h2>
+            <table class="table table-striped" style="margin-bottom: 0;">
+                @foreach (Game game in gameDayLayout.Games)
+                {
+                    @Html.Partial("_GameLayout", game)
+                }
+            </table>
+            
+        </div>
+    </div>
+}
+

@@ -1,0 +1,25 @@
+﻿@model Game
+
+<tr>
+    <td>
+        <div class="pull-left" style="width: 200px;">
+            <img src="@Model.AwayTeam.CbsLogo" style="padding-right: 2px;" />@Model.AwayTeam.Name
+        </div>
+        <div class="pull-left" style="width: 100px;">
+            @Model.AwayTeam.Record
+        </div>
+        <div class="pull-left" style="width: 50px;">
+            @@
+        </div>
+        <div class="pull-left" style="width: 200px;">
+            <img src="@Model.HomeTeam.CbsLogo" style="padding-right: 2px;" />@Model.HomeTeam.Name
+        </div>
+        <div class="pull-left" style="width: 100px;">
+            @Model.HomeTeam.Record
+        </div>
+        <div class="pull-right">
+            <a href="javascript:void(0);" class="matchupLink" data-id="@Model.ID">Matchup</a>
+        </div>
+    </td>
+</tr>
+

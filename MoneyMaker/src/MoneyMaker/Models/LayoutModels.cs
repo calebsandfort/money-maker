@@ -38,4 +38,25 @@ namespace MoneyMaker.Models
             this.Teams = new List<Team>();
         }
     }
+
+    public class GameWeekLayout
+    {
+        public List<GameDayLayout> GameDayLayouts { get; set; }
+
+        public GameWeekLayout()
+        {
+            this.GameDayLayouts = new List<GameDayLayout>();
+        }
+    }
+
+    public class GameDayLayout
+    {
+        public DateTime Day { get; set; }
+        public List<Game> Games { get; set; }
+
+        public GameDayLayout()
+        {
+            this.Games = new List<Game>();
+        }
+    }
 }

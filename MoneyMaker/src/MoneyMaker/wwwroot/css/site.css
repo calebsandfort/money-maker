@@ -67,21 +67,25 @@
 }
 
 .block-header-eeeeee h2 .title,
-.block-header-eeeeee h2 .decoration{
+.block-header-eeeeee h2 .decoration {
     background: #eeeeee !important;
 }
 
 .block-header-white h2 .decoration,
-.block-header-white h2 .title{
+.block-header-white h2 .title {
     background: white !important;
 }
 
 /*#endregion */
 
+.modal-xl {
+    width: 1100px;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
 }

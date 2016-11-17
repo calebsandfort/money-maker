@@ -1,0 +1,52 @@
+﻿@model Game
+
+<div class="row">
+    <div class="col-xs-5">
+        <div class="panel panel-default panel-pricing">
+            <div class="panel-heading text-center">
+                @*<i class="fa fa-desktop"></i>*@
+                <h3 style="margin-bottom: 0;"><img src="@Model.AwayTeam.CbsLogo" style="padding-right: 2px;" />@Model.AwayTeam.Name</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p><strong>@Model.AwayTeam.Record</strong></p>
+            </div>
+            <ul class="list-group text-center">
+                <li class="list-group-item">Scaffolding</li>
+                <li class="list-group-item">Generation</li>
+                <li class="list-group-item">Insertion</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="panel panel-default panel-pricing">
+            <div class="panel-heading text-center">
+                @*<i class="fa fa-desktop"></i>*@
+                <h3 style="margin-bottom: 4px;">@@</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p><strong>&nbsp;</strong></p>
+            </div>
+            <ul class="list-group text-center">
+                <li class="list-group-item">&nbsp;</li>
+                <li class="list-group-item">&nbsp;</li>
+                <li class="list-group-item">&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-5">
+        <div class="panel panel-default panel-pricing">
+            <div class="panel-heading text-center">
+                @*<i class="fa fa-desktop"></i>*@
+                <h3 style="margin-bottom: 0;"><img src="@Model.HomeTeam.CbsLogo" style="padding-right: 2px;" />@Model.HomeTeam.Name</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p><strong>@Model.HomeTeam.Record</strong></p>
+            </div>
+            <ul class="list-group text-center">
+                <li class="list-group-item">Scaffolding</li>
+                <li class="list-group-item">Generation</li>
+                <li class="list-group-item">Insertion</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,42 @@ namespace MoneyMaker.Models
     public class EntityBase
     {
         public int ID { get; set; }
+
+        public override bool Equals(System.Object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            EntityBase x = obj as EntityBase;
+            if ((System.Object)x == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return this.ID == x.ID;
+        }
+
+        public bool Equals(EntityBase x)
+        {
+            // If parameter is null return false:
+            if ((object)x == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return this.ID == x.ID;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID.GetHashCode();
+        }
     }
     #endregion
 
@@ -26,6 +62,15 @@ namespace MoneyMaker.Models
         public DateTime End { get; set; }
 
         public int Number { get; set; }
+
+        [NotMapped]
+        public String Display
+        {
+            get
+            {
+                return $"Week {this.Number}";
+            }
+        }
 
         public ICollection<Game> Games { get; set; }
     }
@@ -128,6 +173,15 @@ namespace MoneyMaker.Models
         }
 
         [NotMapped]
+        public String CbsLogoBig
+        {
+            get
+            {
+                return $"http://sports.cbsimg.net/images/nfl/logos/70x70/{this.CbsId}.png";
+            }
+        }
+
+        [NotMapped]
         public String Record
         {
             get
@@ -171,6 +225,16 @@ namespace MoneyMaker.Models
                     this.Ties += 1;
                 }
             }
+        }
+
+        public void SyncStats(Team team)
+        {
+            this.OffenseRank = team.OffenseRank;
+            this.OffenseRushingRank = team.OffenseRushingRank;
+            this.OffensePassingRank = team.OffensePassingRank;
+            this.DefenseRank = team.DefenseRank;
+            this.DefenseRushingRank = team.DefenseRushingRank;
+            this.DefensePassingRank = team.DefensePassingRank;
         }
         #endregion
     }
